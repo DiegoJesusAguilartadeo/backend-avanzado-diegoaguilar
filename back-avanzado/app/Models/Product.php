@@ -7,7 +7,7 @@ use App\Models\Category;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Facades\DB;
 use OpenApi\Attributes as OA;
-
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 #[OA\Schema(
     schema: "Product",
@@ -38,6 +38,12 @@ class Product extends Model
     // $query = 'select * from products where category_id = 1 and stock > 0
     // para AND: anidar wheres...
     // para OR: usar orwhere
+
+
+    public function orderItems(): HasMany
+{
+    return $this->hasMany(OrderItem::class);
+}
 
 
     // 1499.9995

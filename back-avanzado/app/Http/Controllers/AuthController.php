@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use OpenApi\Attributes as OA;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
  
 

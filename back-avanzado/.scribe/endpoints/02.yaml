@@ -1,0 +1,156 @@
+name: 'Pasarela de Pago Stripe'
+description: |-
+
+  Endpoints para el procesamiento de eventos asíncronos y webhooks enviados por Stripe.
+endpoints:
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/checkout/success
+    metadata:
+      custom: []
+      groupName: 'Pasarela de Pago Stripe'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"message":"Pago procesado o en verificaci\u00f3n.","session_id":null}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: Origin
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/checkout/cancel
+    metadata:
+      custom: []
+      groupName: 'Pasarela de Pago Stripe'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"message":"El proceso de pago fue cancelado por el usuario."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: Origin
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/stripe/webhook
+    metadata:
+      custom: []
+      groupName: 'Pasarela de Pago Stripe'
+      groupDescription: |-
+
+        Endpoints para el procesamiento de eventos asíncronos y webhooks enviados por Stripe.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Procesar Webhook de Stripe'
+      description: |-
+        Recibe y verifica las notificaciones de eventos desde Stripe.
+        Al recibir un evento 'checkout.session.completed', actualiza la orden a 'paid',
+        el pago a 'completed' y descuenta el stock de productos en una transacción atómica.
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/stripe/checkout
+    metadata:
+      custom: []
+      groupName: 'Pasarela de Pago Stripe'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Re-generar Sesión de Checkout para la última orden pendiente del usuario'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null

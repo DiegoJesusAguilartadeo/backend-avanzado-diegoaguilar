@@ -2,28 +2,27 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use App\Repositories\ProductRepositoryInterface;
+use App\Models\User;
 use App\Repositories\EloquentProductRepository;
+use App\Repositories\ProductRepositoryInterface;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
     public function register(): void
     {
         $this->app->bind(
-            \App\Repositories\ProductRepositoryInterface::class,
-            \App\Repositories\EloquentProductRepository::class
+            ProductRepositoryInterface::class,
+            EloquentProductRepository::class
         );
     }
 
-    /**
-     * Bootstrap any application services.
-     */
     public function boot(): void
     {
-        //
+        // Gate unificada y explícita para administradores
+        Gate::define('admin-access', function (?User $user) {
+            return $user !== null && $user->role === 'admin';
+        });
     }
 }
